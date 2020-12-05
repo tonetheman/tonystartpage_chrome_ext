@@ -41,8 +41,8 @@ function handle_muting() {
 	// update the tab to be muted
 	// the only reason I added the callback func resFunc
 	// is for debugging
-        chrome.tabs.update(t.id,
-            {muted: true}, resFunc);
+        //chrome.tabs.update(t.id,
+        //    {muted: true}, resFunc);
     });
 };
 
