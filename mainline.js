@@ -1,8 +1,16 @@
+let target = dayjs("2021-07-01");
 
 function paint() {
-    let mydate = new Date();
+    let now = dayjs();
+    let days_until_target = parseInt(target.diff(now,"d"));
+    let weeks_until_target = parseInt(target.diff(now,"w"));
+
     let e = document.getElementById("d");
-    e.innerHTML = mydate;
+    e.innerHTML = now.format();
+    
+    document.getElementById("days_to_target").innerHTML = days_until_target;
+    document.getElementById("weeks_to_target").innerHTML = weeks_until_target;
+
 }
 
 function paintCPU() {
@@ -16,9 +24,9 @@ function paintCPU() {
 }
 
 let imgs =  [ 
-    "freestocks--Qf9JKLysUg-unsplash.jpg",
-    "mel-poole-LUPXhXj2ip0-unsplash.jpg",
-    "toni-cuenca-CvFARq2qu8Y-unsplash.jpg"
+    "davide-pietralunga-a__cDtgKo50-unsplash.jpg",
+    "balu-gaspar-0fwVPmXE_k8-unsplash.jpg",
+    "simon-berger-MtgvJIO17iA-unsplash.jpg",
 ];
 
 function getRandomInt(maxNotInclusive) {
@@ -46,7 +54,14 @@ function handle_muting() {
     });
 };
 
+function handle_dayjs_plugins() {
+    dayjs.extend(window.dayjs_plugin_weekOfYear)
+}
+
 function main() {
+
+    handle_dayjs_plugins();
+
     handle_muting();
 
     paint_background();
